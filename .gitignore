@@ -19,3 +19,4 @@ hs_err_pid*
 
 # Couchbase database directory files 
 couchbase
+/target/
