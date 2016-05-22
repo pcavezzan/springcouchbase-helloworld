@@ -1,9 +1,6 @@
 package fr.cavezzan.demo;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -54,22 +51,23 @@ public class HelloWorld {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		SpringApplication.run(HelloWorld.class, args).close();
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(PersonRepository repo) {
+	CommandLineRunner commandLineRunner(final PersonRepository repo) {
 		return args -> {
+			// Exemple 1
+			System.out.println(repo.findOne("person::helloworld"));
+
+			// Exemple 2
 			final Person p = new Person();
-			p.setDob(Date.from(LocalDate.of(2000, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-			p.setFname("Hello");
-			p.setLname("World");
-			p.setIdentity(new Identity());
-			p.getIdentity().setFname("Hello");
-			p.setId("person::1");
+			p.setFname("MyFirstName");
+			p.setLname("MyLastName");
+			p.setUsername("myusername");
+			p.setId("person::myusername");
 			repo.save(p);
-			System.out.println(repo.findOne(p.getId()));
 			repo.delete(p);
 		};
 	}
@@ -85,79 +83,47 @@ class Person {
 	@Id
 	private String id;
 	@Field
+	private String username;
+	@Field
 	private String lname;
 	@Field
 	private String fname;
-	@Field
-	private Date dob;
-	@Field
-	private Identity identity;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(final String username) {
+		this.username = username;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(final String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(final String lname) {
+		this.lname = lname;
+	}
+
+	public void setId(final String id) {
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-	
-	public String getLname() {
-		return lname;
-	}
-	
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-	
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public Identity getIdentity() {
-		return identity;
-	}
-
-	public void setIdentity(Identity identity) {
-		this.identity = identity;
-	}
-
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", lname=" + lname + ", fname=" + fname + ", dob=" + dob + "]";
+		return "Person [id=" + id + ",username=" + username + ", lname=" + lname + ", fname=" + fname + "]";
 	}
 }
 
-class Identity {
-	private String lname;
-	private String fname;
-	private LocalDate dob;
-
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
-	public LocalDate getDob() {
-		return dob;
-	}
-
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
-	}
-
-}
