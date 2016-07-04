@@ -11,7 +11,7 @@ import fr.cavezzan.demo.api.Person;
 import fr.cavezzan.demo.api.PersonService;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person")
 public class PersonResource {
 
 	@Autowired

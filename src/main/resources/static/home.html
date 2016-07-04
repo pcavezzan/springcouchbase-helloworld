@@ -1,7 +1,10 @@
 <h1>Greeting</h1>
 <div ng-show="authenticated">
-    <p>The ID is {{controller.greeting.id}}</p>
-    <p>The content is {{controller.greeting.content}}</p>
+	<ul>
+	<li ng-repeat="p in controller.persons track by $index">
+  		{{p.firstName}}  {{p.lastName}} <a href="#/person/{{p.username}}">{{p.username}}</a>
+  	</li>
+	</ul>    
 </div>
 <div  ng-show="!authenticated">
     <p>Login to see your greeting</p>

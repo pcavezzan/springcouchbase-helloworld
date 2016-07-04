@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
 import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
 
-import com.couchbase.client.java.cluster.ClusterInfo;
-
 @Configuration
 @EnableCouchbaseRepositories(basePackages={"fr.cavezzan.demo.persistence.entities.repositories"})
 class CouchbaseConfiguration extends AbstractCouchbaseConfiguration {

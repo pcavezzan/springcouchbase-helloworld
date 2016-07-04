@@ -8,14 +8,25 @@ angular.module('main', ['ngRoute'])
 			templateUrl: 'login.html',
 			controller: 'navigation',
 			controllerAs: 'controller'
-		}).otherwise('/');
+		}).when('/person/:username',{
+			templateUrl: 'person.html',
+			controller: 'person',
+			controllerAs: 'controller'
+		})
+		.otherwise('/');
 		
 		$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 	})
 	.controller('home', function($http){
 		var self = this;
-		$http.get('/resource/').then(function(response){
-			self.greeting = response.data;
+		$http.get('/api/person/').then(function(response){
+			self.persons = response.data;
+		})
+	})
+	.controller('person', function($http, $routeParams) {
+		var self = this;
+		$http.get('/api/person/' + $routeParams.username).then(function(response) {
+			self.person = response.data;
 		})
 	})
 	.controller('navigation', function($rootScope, $http, $location){
