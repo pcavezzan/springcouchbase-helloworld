@@ -32,7 +32,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-couchbase</artifactId>
+			<version>2.1.2.RELEASE</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -50,7 +54,8 @@
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
-						<!-- Serves *only* to filter the wro.xml so it can get an absolute path for the project -->
+						<!-- Serves *only* to filter the wro.xml so it can get an absolute 
+							path for the project -->
 						<id>copy-resources</id>
 						<phase>validate</phase>
 						<goals>

@@ -22,34 +22,6 @@
 //@SpringBootApplication
 //public class HelloWorld {
 //
-//	@EnableCouchbaseRepositories
-//	@Configuration
-//	static class CouchbaseConfiguration extends AbstractCouchbaseConfiguration {
-//
-//		@Value("${couchbase.cluster.bucket}")
-//		private String bucketName;
-//
-//		@Value("${couchbase.cluster.password}")
-//		private String password;
-//
-//		@Value("${couchbase.cluster.ip}")
-//		private String ip;
-//
-//		@Override
-//		protected List<String> bootstrapHosts() {
-//			return Arrays.asList(this.ip);
-//		}
-//
-//		@Override
-//		protected String getBucketName() {
-//			return this.bucketName;
-//		}
-//
-//		@Override
-//		protected String getBucketPassword() {
-//			return this.password;
-//		}
-//	}
 //
 //	public static void main(final String[] args) {
 //		SpringApplication.run(HelloWorld.class, args).close();
@@ -73,57 +45,3 @@
 //	}
 //
 //}
-//
-//interface PersonRepository extends CouchbaseRepository<Person, String> {
-//
-//}
-//
-//@Document
-//class Person {
-//	@Id
-//	private String id;
-//	@Field
-//	private String username;
-//	@Field
-//	private String lname;
-//	@Field
-//	private String fname;
-//
-//	public String getUsername() {
-//		return username;
-//	}
-//
-//	public void setUsername(final String username) {
-//		this.username = username;
-//	}
-//
-//	public String getFname() {
-//		return fname;
-//	}
-//
-//	public void setFname(final String fname) {
-//		this.fname = fname;
-//	}
-//
-//	public String getLname() {
-//		return lname;
-//	}
-//
-//	public void setLname(final String lname) {
-//		this.lname = lname;
-//	}
-//
-//	public void setId(final String id) {
-//		this.id = id;
-//	}
-//
-//	public String getId() {
-//		return id;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Person [id=" + id + ",username=" + username + ", lname=" + lname + ", fname=" + fname + "]";
-//	}
-//}
-//
