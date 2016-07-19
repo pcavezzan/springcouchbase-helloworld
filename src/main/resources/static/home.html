@@ -1,10 +1,12 @@
-<h1>Greeting</h1>
+<h1>Person</h1>
 <div ng-show="authenticated">
+	<li ng-show="authenticated"><a href="#/person">Create</a></li>
+
 	<ul>
-	<li ng-repeat="p in controller.persons track by $index">
-  		{{p.firstName}}  {{p.lastName}} <a href="#/person/{{p.username}}">{{p.username}}</a>
-  	</li>
-	</ul>    
+		<li ng-repeat="p in controller.persons track by $index">
+	  		{{p.firstName}}  {{p.lastName}} <a ng-href="#/person/{{p.username}}">{{p.username}}</a>
+	  	</li>
+	</ul>
 </div>
 <div  ng-show="!authenticated">
     <p>Login to see your greeting</p>

@@ -1,3 +1,14 @@
 <div ng-show="authenticated">
-	<h1>Person {{controller.person.username}}</h1>	    
+	<form class="simple-form" ng-submit="controller.submit()">
+		First Name: <input type="text" ng-model="controller.person.firstName" required /><br /> 
+		Last Name: <input type="text" ng-model="controller.person.lastName" required /><br />
+		Username: <inpu type="username" ng-model="controller.person.username" required /><br />
+		<!-- 
+		Gender: <input type="radio" ng-model="person.gender" value="male" />
+			male <input type="radio" ng-model="person.gender" value="female" />
+			female<br /> 
+		--> 
+		<input type="submit" value="Save" />
+		<input type="button" ng-click="controller.submit()" value="Save Button" />
+	</form>
 </div>

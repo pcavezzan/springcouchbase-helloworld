@@ -12,6 +12,10 @@ angular.module('main', ['ngRoute'])
 			templateUrl: 'person.html',
 			controller: 'person',
 			controllerAs: 'controller'
+		}).when('/person',{
+			templateUrl: 'person.html',
+			controller: 'person',
+			controllerAs: 'controller'
 		})
 		.otherwise('/');
 		
@@ -19,7 +23,7 @@ angular.module('main', ['ngRoute'])
 	})
 	.controller('home', function($http){
 		var self = this;
-		$http.get('/api/person/').then(function(response){
+		$http.get('/api/person/list').then(function(response){
 			self.persons = response.data;
 		})
 	})
@@ -28,6 +32,18 @@ angular.module('main', ['ngRoute'])
 		$http.get('/api/person/' + $routeParams.username).then(function(response) {
 			self.person = response.data;
 		})
+		
+		self.submit = function() {
+			
+			$http.post('/api/person', $.param(self.person), {
+				headers : {
+					"content-type" : "application/x-www-form-urlencoded"
+				}
+			}).then(function() {
+				
+			});
+			
+		};
 	})
 	.controller('navigation', function($rootScope, $http, $location){
 		var self = this;
