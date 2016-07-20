@@ -41,7 +41,7 @@ public class PersonResource {
 	}
 	
 	@RequestMapping(path="/{id}", method = RequestMethod.PUT)
-	public Person updatePersonForm(@RequestBody Person person) {
+	public Person updatePersonForm(@PathVariable final String id, @RequestBody fr.cavezzan.demo.persistence.entities.Person person) {
 		return personService.save(person);
 	}
 }

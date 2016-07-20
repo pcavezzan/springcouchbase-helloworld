@@ -29,20 +29,33 @@ angular.module('main', ['ngRoute'])
 	})
 	.controller('person', function($http, $routeParams) {
 		var self = this;
-		$http.get('/api/person/' + $routeParams.username).then(function(response) {
-			self.person = response.data;
-		})
+		
+		if ($routeParams.username != null) {
+			$http.get('/api/person/' + $routeParams.username).then(function(response) {
+				self.person = response.data;
+			})
+		}
+		
 		
 		self.submit = function() {
 			
-			$http.post('/api/person', $.param(self.person), {
-				headers : {
-					"content-type" : "application/x-www-form-urlencoded"
-				}
-			}).then(function() {
-				
-			});
-			
+			if (self.person.id == null) {
+				$http.post('/api/person', $.param(self.person), {
+					headers : {
+						"content-type" : "application/x-www-form-urlencoded"
+					}
+				}).then(function() {
+					
+				});
+			} else {
+				$http.put('/api/person/' + self.person.id, JSON.stringify(self.person), {
+					headers : {
+						"content-type" : "application/json"
+					}
+				}).then(function() {
+					
+				});
+			}
 		};
 	})
 	.controller('navigation', function($rootScope, $http, $location){
