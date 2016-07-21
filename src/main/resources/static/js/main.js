@@ -25,7 +25,11 @@ angular.module('main', ['ngRoute'])
 		var self = this;
 		$http.get('/api/person/list').then(function(response){
 			self.persons = response.data;
-		})
+		});
+		
+		self.delete = function(person) {
+			$http.delete('/api/person/' + person.id);
+		}
 	})
 	.controller('person', function($http, $routeParams) {
 		var self = this;

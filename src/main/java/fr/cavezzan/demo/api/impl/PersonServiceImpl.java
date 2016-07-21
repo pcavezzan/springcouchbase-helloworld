@@ -35,7 +35,12 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public void delete(Person person) {
-		personRepository.delete(person.getId());
+		delete(person.getId());
+	}
+	
+	@Override
+	public void delete(String id) {
+		personRepository.delete(id);
 	}
 
 	public void setPersonRepository(PersonRepository personRepository) {

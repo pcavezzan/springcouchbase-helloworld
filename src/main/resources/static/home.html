@@ -4,7 +4,7 @@
 
 	<ul>
 		<li ng-repeat="p in controller.persons track by $index">
-	  		{{p.firstName}}  {{p.lastName}} <a ng-href="#/person/{{p.username}}">{{p.username}}</a>
+	  		{{p.firstName}}  {{p.lastName}} {{p.username}}  <a ng-href="#/person/{{p.username}}" class="glyphicon glyphicon-pencil" /> <a ng-click="controller.delete(p)" class="glyphicon glyphicon-trash" />
 	  	</li>
 	</ul>
 </div>

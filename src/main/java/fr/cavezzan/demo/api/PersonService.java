@@ -11,4 +11,6 @@ public interface PersonService {
 	Person save(Person person);
 	
 	void delete(Person person);
+	
+	void delete(String id);
 }

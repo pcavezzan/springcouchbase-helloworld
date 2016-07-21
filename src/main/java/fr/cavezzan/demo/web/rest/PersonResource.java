@@ -44,4 +44,9 @@ public class PersonResource {
 	public Person updatePersonForm(@PathVariable final String id, @RequestBody fr.cavezzan.demo.persistence.entities.Person person) {
 		return personService.save(person);
 	}
+	
+	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+	public void deletePersonForm(@PathVariable final String id) {
+		personService.delete(id);
+	}
 }
